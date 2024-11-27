@@ -1,20 +1,22 @@
 import { Component, OnInit, signal, viewChild, viewChildren} from '@angular/core';
-import { TemperaturaBogotaService } from '../../service/temperatura-bogota.service';
+import {  ubicacionService } from '../../service/ubicacion.service';
 import { GoogleMap, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-locacion',
   standalone: true,
-  imports: [GoogleMap, FormsModule, MapAdvancedMarker, MapInfoWindow],
+  imports: [GoogleMap, FormsModule, MapAdvancedMarker, MapInfoWindow, RouterModule],
   templateUrl: './locacion.component.html',
   styleUrl: './locacion.component.css'
 })
 export default class LocacionComponent implements OnInit {
+
   infoWindowRef = viewChild.required(MapInfoWindow);
   markersRef = viewChildren(MapAdvancedMarker)
 
-  constructor(private temperaturaService: TemperaturaBogotaService){}
+  constructor(private ubicacionService: ubicacionService){}
 
   ubicacion: any  [] = [];
   center: google.maps.LatLngLiteral = {lat: 4.60971, lng: -74.08175};
@@ -40,10 +42,9 @@ export default class LocacionComponent implements OnInit {
   }
 
   getAllUbicaciones(){
-    this.temperaturaService.getAllUbicaciones().subscribe(
+    this.ubicacionService.getAllUbicaciones().subscribe(
       dato => {
         this.ubicacion = dato.ubicacionList;
-        console.log(this.ubicacion)
       }
     )
   }

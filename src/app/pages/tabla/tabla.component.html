@@ -1,0 +1,89 @@
+<div class="flex flex-col p-5">
+    <div class="flex justify-center">
+        <h1 class="text-xl font-bold">Lista de Coordenadas</h1>
+    </div>
+    <div class="flex pt-5 gap-x-4">
+        <button [routerLink]="['/crear']"
+            class="bg-cyan-600 text-white py-2 px-6 rounded-lg hover:bg-cyan-400">
+            Crear Coordenada
+        </button>
+        <button [routerLink]="['/locacion']"
+        class="bg-cyan-600 text-white py-2 px-6 rounded-lg hover:bg-cyan-400">
+        Mapa
+        </button>
+    </div>
+    <div class="flex flex-col pt-2">
+        <div class="overflow-x-auto pb-4">
+            <div class="min-w-full inline-block align-middle">
+                <div class="overflow-hidden border rounded-lg">
+                    <table class="table-auto min-w-full rounded-xl">
+                        <thead>
+                            <tr class="bg-gray-800 text-gray-400">
+                                <th class="p-3 text-left text-sm font-semibold">Ubicación ID</th>
+                                <th class="p-3 text-left text-sm font-semibold">Nombre</th>
+                                <th class="p-3 text-left text-sm font-semibold">Longitud</th>
+                                <th class="p-3 text-left text-sm font-semibold">Latitud</th>
+                                <th class="p-3 text-left text-sm font-semibold">Temperatura</th>
+                                <th class="p-3 text-left text-sm font-semibold">Editar</th>
+                                <th class="p-3 text-left text-sm font-semibold">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-300">
+                            <!-- Loop para coordenadas -->
+                            @for (ubicaciones of ubicacion; track ubicaciones.id) { 
+                            <tr class="bg-white transition-all duration-500 hover:bg-gray-50">
+                                <td class="p-3 text-sm text-gray-900">{{ ubicaciones.id }}</td>
+                                <td class="p-3 text-sm text-gray-900">{{ ubicaciones.nombre }}</td>
+                                <td class="p-3 text-sm text-gray-900">{{ ubicaciones.longitud }}</td>
+                                <td class="p-3 text-sm text-gray-900">{{ ubicaciones.latitud }}</td>
+                                <td class="p-3 text-sm text-gray-900">{{ ubicaciones.temperatura_actual }}</td>
+                                <td class="p-3">
+                                    <button 
+                                        class="rounded-full bg-white p-2 hover:bg-indigo-600 group">
+                                        <svg 
+                                            class="w-5 h-5 text-indigo-500 group-hover:text-white" 
+                                            fill="currentColor" 
+                                            viewBox="0 0 20 20" 
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.95 4.05a2.5 2.5 0 010 3.536l-9.39 9.39H4v-2.122l9.39-9.39a2.5 2.5 0 013.536 0zM13.829 2.929a4.5 4.5 0 00-6.364 0l-1.768 1.768 6.364 6.364 1.768-1.768a4.5 4.5 0 000-6.364z"></path>
+                                        </svg>
+                                    </button>
+                                </td>
+                                <td class="p-3">
+                                    <button 
+                                        class="rounded-full bg-white p-2 hover:bg-red-600 group">
+                                        <svg 
+                                            class="w-5 h-5 text-red-500 group-hover:text-white" 
+                                            fill="currentColor" 
+                                            viewBox="0 0 20 20" 
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" 
+                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" 
+                                                  clip-rule="evenodd">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center gap-x-2">
+        <button (click)="prevPage()" [disabled]="currentPage === 1" class=" bg-cyan-600 text-white py-1 px-6 rounded-lg">Anterior</button>
+        <div class="flex space-x-2">
+           @for(pages of [].constructor(totalPages); track $index){
+            <button  (click)="goToPage($index + 1)" 
+                    [class.bg-cyan-600]="currentPage === ( $index + 1)" 
+                    [class.text-white]="currentPage === ( $index + 1)" 
+                    class="py-2 px-6 rounded-lg cursor-pointer">
+              {{ $index + 1 }}
+            </button>
+            }
+          </div>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="p-3 bg-cyan-600 text-white py-1 px-6 rounded-lg">Siguiente</button>
+      </div>
+</div>
