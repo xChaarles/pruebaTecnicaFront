@@ -55,7 +55,18 @@ export default class TablaComponent implements OnInit {
   }
 
   deleteUbicacion(id: string){
+     //funcion de borrar esta coordenada si o no
+     const confirmRegistration = confirm('¿Estás seguro de que deseas borrar esta coordenada?');
+     if (!confirmRegistration) {
+       return;
+     }
 
+     this.ubicacionService.deeleteCoordenada(id).subscribe(
+      dato => {
+        console.log(dato)
+        this.getAllUbicacion()
+      }
+     )
   }
 
 }

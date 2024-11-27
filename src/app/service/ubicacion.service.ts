@@ -25,4 +25,9 @@ export class ubicacionService {
     return this.http.post<any>(url, ubicacionData);
   }
 
+  deeleteCoordenada(id:string):Observable<any>{
+    const url = `${this.apiUrl}/delete-ubicacion/${id}`;
+    return this.http.delete(url)
+  }
+
 }

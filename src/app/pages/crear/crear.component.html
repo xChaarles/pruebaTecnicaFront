@@ -26,9 +26,14 @@
                             <label class="left-0 -top-3.5 text-gray-400 text-sm">Temperatura °C :</label>
                             <input [(ngModel)]="ubicacionData.temperatura_actual" type="number"  class="rounded-lg h-8 w-full border-b-2 border-gray-300 text-gray-900" name="fechaEmision">
                         </div>
-                        <div class="flex mx-[150px]">
+                        <div class="flex mx-[150px] gap-x-2">
                             <button
-                            class="font-medium text-white dark:text-white rounded-md bg-blue-600 w-24 h-8 hover:bg-blue-400" (click)="crearCoordenada()">Crear</button>
+                            class="font-medium text-white dark:text-white rounded-md bg-cyan-600 px-4 py-2 hover:bg-cyan-400" (click)="crearCoordenada()">Crear</button>
+                                <button 
+                                class="font-medium text-white dark:text-white rounded-md bg-cyan-600 px-4 hover:bg-cyan-400"
+                                [routerLink]="['/tabla']">
+                                    Tabla
+                                </button>
                             </div>
                         </div>
                     </div>
