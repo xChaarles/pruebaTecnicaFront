@@ -1,1 +1,48 @@
-<p>update works!</p>
+<div class="bg-white flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div
+            class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl border border-sky-600 sm:p-20 text-gray-400">
+            <div class="flex justify-center">
+                <h1 class="text-2xl font-semibold">Update Nuevo Coordenada</h1>
+            </div>
+            <form class="">
+                <div class="divide-y divide-gray-200">
+                    <div class="py-8 text-base leading-6 space-y-4 text-gray-400 sm:text-lg sm:leading-7">
+                        <div class="relative form-group">
+                            <label class="left-0 -top-3.5 text-gray-400 text-sm">Nombre :</label>
+                            <input [value]="ubicacionData.ubicacion?.nombre"
+                            [(ngModel)]="ubicacionData.nombre" type="text" id="nombre" class="rounded-lg h-8 w-full border-b-2 border-gray-300 text-gray-900" name="nombre">
+                        </div>
+                        <div class="relative form-group">
+                            <label class="left-0 -top-3.5 text-gray-400 text-sm ">Longitud :</label>
+                            <input [value]="ubicacionData.ubicacion?.longitud"
+                            [(ngModel)]="ubicacionData.longitud" type="numbere" id="Descripcion" class="rounded-lg h-8 w-full border-b-2 border-gray-300 text-gray-900" name="Descripcion">
+                        </div>
+                        <div class="relative form-group">
+                            <label class="left-0 -top-3.5 text-gray-400 text-sm ">Latitud :</label>
+                            <input [value]="ubicacionData.ubicacion?.latitud"
+                            [(ngModel)]="ubicacionData.latitud" type="number" class="rounded-lg h-8 w-full border-b-2 border-gray-300 text-gray-900" name="img">
+                        </div>
+                        <div class="relative form-group">
+                            <label class="left-0 -top-3.5 text-gray-400 text-sm">Temperatura °C :</label>
+                            <input [value]="ubicacionData.ubicacion?.temperatura_actual"
+                            [(ngModel)]="ubicacionData.temperatura_actual" type="number"  class="rounded-lg h-8 w-full border-b-2 border-gray-300 text-gray-900" name="fechaEmision">
+                        </div>
+                        <div class="flex mx-[150px] gap-x-2">
+                            <button
+                            class="font-medium text-white dark:text-white rounded-md bg-cyan-600 px-4 py-2 hover:bg-cyan-400" (click)="updateCoordenada()">Actualizar</button>
+                                <button 
+                                class="font-medium text-white dark:text-white rounded-md bg-cyan-600 px-4 hover:bg-cyan-400"
+                                [routerLink]="['/tabla']">
+                                    Tabla
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+

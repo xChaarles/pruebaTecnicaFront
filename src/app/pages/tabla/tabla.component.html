@@ -39,7 +39,8 @@
                                 <td class="p-3 text-sm text-gray-900">{{ ubicaciones.temperatura_actual }}</td>
                                 <td class="p-3">
                                     <button 
-                                        class="rounded-full bg-white p-2 hover:bg-indigo-600 group">
+                                        class="rounded-full bg-white p-2 hover:bg-indigo-600 group"
+                                        [routerLink]="['/update', ubicaciones.id]">
                                         <svg 
                                             class="w-5 h-5 text-indigo-500 group-hover:text-white" 
                                             fill="currentColor" 

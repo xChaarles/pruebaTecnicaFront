@@ -17,6 +17,11 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/crear/crear.component')
     },
     {
+        path: 'update/:id',
+        title: 'update',
+        loadComponent: () => import('./pages/update/update.component')
+    },
+    {
         path: '',
         redirectTo: 'locacion',
         pathMatch: 'full'

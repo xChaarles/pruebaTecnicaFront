@@ -37,7 +37,15 @@
                     >
                 </map-advanced-marker>
             }
-            <map-info-window />   
+
+            @if (currentLocation) {
+                <map-advanced-marker
+                #marker="mapAdvancedMarker"
+                [position]="currentLocation"
+                (mapClick)="openMyLocationWindow(marker)">
+                </map-advanced-marker>
+            }
+            <map-info-window>{{ infoContent }}</map-info-window>   
             </google-map>   
         </div>
     </div>

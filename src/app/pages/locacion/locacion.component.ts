@@ -21,9 +21,12 @@ export default class LocacionComponent implements OnInit {
   ubicacion: any  [] = [];
   center: google.maps.LatLngLiteral = {lat: 4.60971, lng: -74.08175};
   zoom = signal(11);
+  currentLocation: google.maps.LatLngLiteral | null = null;
+  infoContent = '';
 
   ngOnInit(): void {
     this.getAllUbicaciones();
+    this.getCurretLocation();
   }
 
   openInfoWindow(locacion: any, marker:MapAdvancedMarker){
@@ -39,6 +42,30 @@ export default class LocacionComponent implements OnInit {
     const markerfRef = markers[posicion];
 
     this.openInfoWindow(locacion, markerfRef)
+  }
+
+  getCurretLocation() {
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.currentLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+          };
+          this.center = this.currentLocation;
+        },
+        (error) => {
+          console.error('Error al obtener la ubicación', error);
+        }
+      );
+    } else {
+      console.error('La geolocalización no está soportada por este navegador.');
+    }
+  }
+
+  openMyLocationWindow(marker: MapAdvancedMarker) {
+    const contenido = `<h3 class="font-bold text-xl">Mi ubicación</h3>`;
+    this.infoWindowRef().open( marker,false, contenido);
   }
 
   getAllUbicaciones(){

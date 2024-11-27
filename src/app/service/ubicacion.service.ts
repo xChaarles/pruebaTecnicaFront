@@ -20,9 +20,19 @@ export class ubicacionService {
     return this.http.get<any>(url)
   }
 
+  getUbicacionById(id:string):Observable<any>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<any>(url);
+  }
+
   crearCoordenada(ubicacionData:any):Observable<any>{
     const url = `${this.apiUrl}/crear-ubicacion`;
     return this.http.post<any>(url, ubicacionData);
+  }
+
+  updateCoordenada(ubbicacionData:any, id: string):Observable<any>{
+    const url = `${this.apiUrl}/update-ubicacion/${id}`;
+    return this.http.put<any>(url, ubbicacionData)
   }
 
   deeleteCoordenada(id:string):Observable<any>{
