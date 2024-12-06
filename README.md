@@ -1,22 +1,34 @@
 # TemperaturaBogotaFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
+Se cuenta con un sistema de estaciones de monitoreo de temperatura dentro de la ciudad de Bogotá, el
+cual requiere de un sitio web para presentación en tiempo real de una tabla con el valor actual reportado
+por las estaciones.
 
-## Development server
+- Crear base de datos con un listado de ubicaciones con el siguiente formato y con la estructura que
+  requiera para el funcionamiento del sistema.
+  - Creada en MySQL
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Crear un CRUD que permita
+  - Crear un nuevo punto de monitoreo en una ubicación
+  - Actualizar las coordenadas y/o el valor de la temperatura monitoreada
+  - Eliminar un punto de monitoreo
 
-## Code scaffolding
+- Desplegar una vista gráfica sencilla donde se pueda evidenciar
+  - Formulario para creación y/o edición de las ubicaciones y su valor de temperatura.
+  - Tabla o Mapa que permita visualizar cada una de las ubicaciones y el último valor de temperatura.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Tecnologias
 
-## Build
+- Back con Spring Boot java
+- Front con Angular y Tailwind css
+- Conexion API de Google Maps
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Imagenes
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Incio](public/Mapa.jpg)
+![Inicio](public/Tabla.jpg)
+![login](public/Crear.jpg)
+![Registro](public/Actualizar.jpg)
 
 ## Running end-to-end tests
 
